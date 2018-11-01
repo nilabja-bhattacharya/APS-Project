@@ -8,13 +8,15 @@ class FibHeap:
 
 ## Fib Heap intenalTree
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, x: int, y: int):
         self.degree = 0
         self.parent = None
         self.child = []
         self.mark = False
         self.key = val
         self.right = self
+        self.x = x
+        self.y = y
 
 def makeNode():
     return Node()
@@ -113,7 +115,7 @@ def FibExtractMin(h: FibHeap):
         h.n = h.n - 1
     return z
 
-def main():
+if __name__ == '__main__':
     h = makeFibHeap()
     FibHeapInsert(h, Node(5))
     FibHeapInsert(h, Node(25))
@@ -124,6 +126,3 @@ def main():
     print(FibExtractMin(h).key)
     print(FibExtractMin(h).key)
     print(FibExtractMin(h).key)
-
-if __name__ == '__main__':
-    main()

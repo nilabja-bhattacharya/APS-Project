@@ -1,3 +1,5 @@
+from Fibbonaci_Heap import *
+
 V = None
 E = None
 EdgeList = []
@@ -30,48 +32,32 @@ class UnionFind:
                 if self.rank[x] == self.rank[y] :
                     self.rank[y] += 1
 
-def Kruskal():
+def Kruskal(h: FibHeap):
     mst_cost = 0
     global EdgeList
     UF = UnionFind(V)
     for i in range(E):
-        x, y, z = EdgeList[i]
+        # x, y, z = EdgeList[i]
+        temp = FibExtractMin(h)
+        x = temp.key
+        y = temp.x
+        z = temp.y
         print("In Kruskal {0}, {1}".format(y,z))
         if not UF.isSameSet(y, z):
             mst_cost += x
             UF.unionSet(y,z)
     return mst_cost
 
-def main():
-    global V, E, EdgeList
-    V = 4
-    E = 5
-    # V = int(input())
-    # E = int(input())
-    EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
+if __name__ == "__main__":
+    # global V, E, EdgeList
+    V = 9
+
+    E = 14
+    h = makeFibHeap()
+    # EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
+    EdgeL = [(0, 1, 4), (0, 7, 8), (1, 2, 8), (1, 7, 11), (2, 3, 7), (2, 8, 2), (2, 5, 4), (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 7, 1), (6, 8, 6), (7, 8, 7)]
     for i in EdgeL:
         u, v, w = i
         print("edge: {0}, {1}, {2}".format(u,v,w))
-        # v = int(input())
-        # w = int(input())
-        EdgeList.append((w,u,v))
-    EdgeList.sort()
-    print(Kruskal())
-
-if __name__ == "__main__":
-    main()
-
-    g.addEdge(0, 1, 4);
-    g.addEdge(0, 7, 8);
-    g.addEdge(1, 2, 8);
-    g.addEdge(1, 7, 11);
-    g.addEdge(2, 3, 7);
-    g.addEdge(2, 8, 2);
-    g.addEdge(2, 5, 4);
-    g.addEdge(3, 4, 9);
-    g.addEdge(3, 5, 14);
-    g.addEdge(4, 5, 10);
-    g.addEdge(5, 6, 2);
-    g.addEdge(6, 7, 1);
-    g.addEdge(6, 8, 6);
-    g.addEdge(7, 8, 7);
+        FibHeapInsert(h, Node(w, u, v))
+    print(Kruskal(h))
