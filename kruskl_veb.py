@@ -11,8 +11,8 @@ class UnionFind:
         for i in range(N):
             self.p[i] = i
 
-    def findSet(self, i: int):
-        if (self.p[i] == i):
+    def findSet(self, i):
+        if (self.p[i] == int(i)):
             return i
         else:
             self.p[i] = self.findSet(self.p[i])
@@ -68,19 +68,26 @@ def kruskal(h: vEB):
 
 
 
+
 if __name__ == "__main__":
     # global V, E, EdgeList
-    V = 9
-    E = 14
+    E = int(input())
+    V = int(input())
+
+    #V = 9
+    #E = 14
     h = vEB.of_size(32)
     # EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
-    EdgeL = [(0, 1, 4), (0, 7, 8), (1, 2, 8), (1, 7, 11), (2, 3, 7), (2, 8, 2), (2, 5, 4), (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 7, 1), (6, 8, 6), (7, 8, 7)]
-    for i in EdgeL:
-        u, v, w = i
+    #EdgeL = [(0, 1, 4), (0, 7, 8), (1, 2, 8), (1, 7, 11), (2, 3, 7), (2, 8, 2), (2, 5, 4), (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 7, 1), (6, 8, 6), (7, 8, 7)]
+    for i in range(E):
+        u = int(input())
+        v = int(input())
+        w = int(input())
         #print("edge: {0}, {1}, {2}".format(u,v,w))
         h.insert(w)
         nodes[w].append(u)
         nodes[w].append(v)
         #print(nodes.get(w))
-    print(list(h))
+    #print(list(h))
     print(kruskal(h))
+    

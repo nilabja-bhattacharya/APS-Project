@@ -1,9 +1,8 @@
-from Fibbonaci_Heap import *
-
+from collections import defaultdict
 V = None
 E = None
 EdgeList = []
-
+nodes = defaultdict(list)
 class UnionFind:
     def __init__(self, N):
         self.rank = [0 for i in range(N)]
@@ -32,44 +31,35 @@ class UnionFind:
                 if self.rank[x] == self.rank[y] :
                     self.rank[y] += 1
 
-def Kruskal(h: FibHeap):
+def kruskal():
     mst_cost = 0
     global EdgeList
     UF = UnionFind(V)
     for i in range(E):
-        # x, y, z = EdgeList[i]
-        temp = FibExtractMin(h)
-        x = temp.key
-        y = temp.x
-        z = temp.y
-        #print("In Kruskal {0}, {1}".format(y,z))
+        x, y, z = EdgeList[i]
+        #print("In Kruskal {0}, {1}".format(x,y))
         if not UF.isSameSet(y, z):
+            #print(mst_cost)
             mst_cost += x
             UF.unionSet(y,z)
+            #print(mst_cost)
+            #print(i)
     return mst_cost
 
-if __name__ == "__main__":
-    # global V, E, EdgeList
-    # V = 9
 
-    # E = 14
-    h = makeFibHeap()
-    # # EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
-    # EdgeL = [(0, 1, 4), (0, 7, 8), (1, 2, 8), (1, 7, 11), (2, 3, 7), (2, 8, 2), (2, 5, 4), (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 7, 1), (6, 8, 6), (7, 8, 7)]
-    # for i in EdgeL:
-    #     u, v, w = i
-    #     print("edge: {0}, {1}, {2}".format(u,v,w))
+if __name__ == "__main__":
     E = int(input())
     V = int(input())
 
-    #V = 9
-    #E = 14
-    #h = vEB.of_size(32)
-    # EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
-    #EdgeL = [(0, 1, 4), (0, 7, 8), (1, 2, 8), (1, 7, 11), (2, 3, 7), (2, 8, 2), (2, 5, 4), (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 7, 1), (6, 8, 6), (7, 8, 7)]
     for i in range(E):
         u = int(input())
         v = int(input())
         w = int(input())
-        FibHeapInsert(h, Node(w, u, v))
-    print(Kruskal(h))
+        lst = []
+        lst.append(w)
+        lst.append(u)
+        lst.append(v)
+        EdgeList.append(lst)
+    EdgeList.sort(key = lambda x: x[0])
+    #print (EdgeList)
+    print (kruskal())
