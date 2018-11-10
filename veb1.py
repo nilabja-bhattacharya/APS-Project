@@ -9,21 +9,19 @@ BASE = 2
 class vEBLeaf(object):
     def __init__(self, word_size):
         self.word_size = word_size
-        self.values = [False]*(1<<self.word_size)
+        self.values = [False, False]
 
-    def __iter__(self):
-        return (index for index, value in enumerate(self.values) if value)
-
-    def __reversed__(self):
-        return (len(self.values)-index-1 for index, value in enumerate(reversed(self.values)) if value)
-
-    @property
     def min(self):
-        return next(iter(self),None)
+        for i in range(2):
+            if self.values[i]:
+                return i
+        return None
     
-    @property
     def max(self):
-        return next(reversed(self),None)
+        for i in range(1, -1, -1):
+            if self.values[i]:
+                return i
+        return None
 
     def insert(self, x):
         self.values[x] = True
@@ -31,27 +29,20 @@ class vEBLeaf(object):
     def delete(self, x):
         self.values[x]= False
 
-    def successor(self, x):
-        if(x+1)>=len(self.values):
-            return None
-        else:
-            try:
-                return self.values[x+1:].index(True) + x +1
-            except ValueError:
-                return None
-
 class vEBTree(object):
     def __init__(self, word_size):
-        self.min = self.max = None
+        self.min_ = self.max_ = None
         self.word_size =  word_size
-        self.summary_size = int(math.ceil(self.word_size/2))
-        self.cluster = [None]*(1<<self.summary_size)
+        self.summary_size = int(self.word_size/2)
+        self.u = 1<<self.summary_size
+        self.cluster = [None]*(self.u)
+        self.mask = self.u - 1
         self.summary = vEB.of_size(self.summary_size)
 
     def __contains__(self,x):
-        if self.min is None:
+        if self.min() is None:
             return False
-        elif self.min == x:
+        elif self.min() == x:
             return True
         else:
             high = self.high(x)
@@ -60,114 +51,77 @@ class vEBTree(object):
                 return False
             else:
                 return low in self.cluster[high]
-    
-    def __iter__(self):
-        if self.min is None:
-            return 
-        yield self.min
-
-        current = self.min
-        while current != self.max:
-            current = self.successor(current)
-            yield current
 
     def high(self, x):
         return x>>int(self.summary_size)
 
     def low(self, x):
-        return x&((1<<int(self.summary_size))-1)
-
+        return x&(self.mask)
     def index(self, i, j):
-        return i*(1<<self.summary_size) + j
+        return (i<<self.summary_size) | j
 
     def insert(self, x):
-        if self.min is None:
-            self.min = self.max = x
+        if self.min() is None:
+            self.min_ = self.max_ = x
             return
-        if x == self.min:
+        if x == self.min():
             return
-        if x<self.min:
-            self.min, x = x, self.min
-        if x>self.max:
-            self.max = x
+        if x<self.min():
+            self.min_, x = x, self.min_
+        if x>self.max():
+            self.max_ = x
 
-        cluster_index = self.high(x)
-        element_index = self.low(x)
-        clustr = self.cluster[cluster_index]
-        if clustr is None:
-             clustr = self.cluster[cluster_index] = vEB.of_size(self.summary_size)
+        cluster_index = x>>int(self.summary_size)
+        element_index = x&(self.mask)
+#         clustr = self.cluster[cluster_index]
+        if self.cluster[cluster_index] is None:
+             self.cluster[cluster_index] = vEB.of_size(self.summary_size)
 
-        if clustr.min is None:
+        if self.cluster[cluster_index].min() is None:
             self.summary.insert(cluster_index)
 
-        clustr.insert(element_index)
+        self.cluster[cluster_index].insert(element_index)
 
-    def successor(self, x):
-        if self.min is None or x>=self.max:
-            return None
-        elif x <self.min:
-            return self.min
-        cluster_index = self.high(x)
-        element_index = self.low(x)
-        clustr = self.cluster[cluster_index]
-
-        if clustr and element_index < clustr.max:
-            element_index = clustr.successor(element_index)
-            return self.index(cluster_index, element_index)
-        else:
-            cluster_index = self.summary.successor(cluster_index)
-            element_index = self.cluster[cluster_index].min
-            return self.index(cluster_index, element_index)
-
-
+    def max(self):
+        return self.max_
+    def min(self):
+        return self.min_
+    
     def delete(self, x):
-        if self.min is None or x<self.min:
+        if self.min() is None or x<self.min():
             return
             
-        if x == self.min:
-            if self.summary is None or self.summary.min is None:
-                self.min = self.max = None
+        if x == self.min():
+            if self.summary is None or self.summary.min() is None:
+                self.min_ = self.max_ = None
                 return
-            cluster_index = self.summary.min
-            element_index = self.cluster[cluster_index].min
+            cluster_index = self.summary.min()
+            element_index = self.cluster[cluster_index].min()
 
-            x = self.min = self.index(cluster_index, element_index)
+            x = self.min_ = (cluster_index<<self.summary_size) | element_index
 
-        cluster_index = self.high(x)
-        element_index = self.low(x)
-        clustr = self.cluster[cluster_index]
+        cluster_index = x>>int(self.summary_size)
+        element_index = x&(self.mask)
+#         clustr = self.cluster[cluster_index]
 
-        if clustr is None:
+        if self.cluster[cluster_index] is None:
             return 
-        clustr.delete(element_index)
+        self.cluster[cluster_index].delete(element_index)
 
-        if clustr.min is None:
+        if self.cluster[cluster_index].min() is None:
+            self.cluster[cluster_index]=None
             self.summary.delete(cluster_index)
 
-        if x==self.max:
-            if self.summary.max is None:
-                self.max = self.min
+        if x==self.max():
+            
+            if self.summary.max() is None:
+                self.max_ = self.min()
             else:
-                cluster_index = self.summary.max
-                element_index = self.cluster[cluster_index].max
-                self.max = self.index(cluster_index, element_index)
+                cluster_index = self.summary.max()
+                element_index = self.cluster[cluster_index].max()
+                self.max_ = (cluster_index<<self.summary_size) | element_index
 
 class vEB(object):
     @classmethod
     def of_size(cls, word_size):
-        return vEBLeaf(word_size) if word_size<=BASE else vEBTree(word_size)
-
-def main():
-  word_size = 16
-  veb = vEB.of_size(word_size)
-
-  values = [ random.randint(0, pow(2, word_size) - 1) for _ in range(pow(2, word_size - 1)) ]
-  for val in values:
-    veb.insert(val)
-  print(list(veb))
-  print('Does veb work?: {}'.format(list(veb) == sorted(set(values))))
-
-if __name__ == '__main__':
-  main()
-
-
+        return vEBLeaf(word_size) if word_size<BASE else vEBTree(word_size)
