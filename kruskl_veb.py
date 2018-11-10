@@ -40,11 +40,10 @@ def kruskal(h: vEB):
     mst_cost = 0
     global EdgeList
     UF = UnionFind(V)
-    temp = h.min
     for i in range(E):
         # x, y, z = EdgeList[i]
         #print(temp)
-        x=temp
+        temp = h.min()
         y=0
         z=0
         if nodes[temp]:
@@ -59,14 +58,13 @@ def kruskal(h: vEB):
             #print (y)
             #print (z)
             if tmp:
-                print('HI')
                 nodes[temp].extend(tmp)
             else:
-                temp = h.successor(temp)
-        print("In Kruskal {0}, {1}".format(x,y))
+                h.delete(temp)
+        #print("In Kruskal {0}, {1}".format(x,y))
         if not UF.isSameSet(y, z):
             #print(mst_cost)
-            mst_cost += x
+            mst_cost += temp
             UF.unionSet(y,z)
             #print(mst_cost)
             #print(temp)
