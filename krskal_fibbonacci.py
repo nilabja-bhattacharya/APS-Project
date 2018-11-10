@@ -6,9 +6,9 @@ EdgeList = []
 
 class UnionFind:
     def __init__(self, N):
-        self.rank = [0 for i in range(N)]
-        self.p = [0 for i in range(N)]
-        for i in range(N):
+        self.rank = [0 for i in range(N+1)]
+        self.p = [0 for i in range(N+1)]
+        for i in range(N+1):
             self.p[i] = i
 
     def findSet(self, i: int):

@@ -13,9 +13,9 @@ int main()
     int t=1;
     //cout<<t<<endl;
     while(t--){
-        int n=rand()%1000 + 1;
+        int n=rand()%10000 + 1;
         printf("%d\n", n);
-        int k=rand()%1000+1;
+        int k=rand()%10000+1;
         printf("%d\n",k);
         for(long long int i=0;i<n;i++){
             int lowerLimit = 1, upperLimit = 1e9+7;
