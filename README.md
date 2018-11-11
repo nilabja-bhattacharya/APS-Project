@@ -124,15 +124,13 @@ Results
 Time Analysis
 =============
 
-[tab:table1]
 
-  **Merge Sort**    **Fibonnaci Heap**    **Van Emde Boas Tree**
+  |**Merge Sort** |   **Fibonnaci Heap**   | **Van Emde Boas Tree**|
   ---------------- -------------------- ------------------------
-  O(c1 * ElogE)      O(c2 * ElogE)           O(c3 * Eloglogu)
+  |O(c1 * ElogE)  |    O(c2 * ElogE)       |    O(c3 * Eloglogu)   |
 
-  : Time Complexity Comparison
+  |: Time Complexity Comparison
 
-[^1]
 
 ![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png){width="1columnwidth"}
 
