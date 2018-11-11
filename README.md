@@ -255,5 +255,3 @@ References
 9.  [Fibbonaci Heap](https://en.wikipedia.org/wiki/Fibonacci_heap)
 
 10. [Van Emde Boas Tree](https://en.wikipedia.org/wiki/Van_Emde_Boas_tree)
-
-[^1]: *E is the number of edges*
