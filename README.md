@@ -1,7 +1,7 @@
 Objective
 =========
 
-Krukal’s algorithm implementation using vEB tree, Fibonacci heap and union find algorithm and their performance comparison
+Kruskal’s algorithm implementation using vEB tree, fibonacci heap and normal union find algorithm and their performance comparison
 
 Introduction
 ============
@@ -129,13 +129,18 @@ Time Analysis
   |--------------| -------------------- |----------------------|
   |O(c1 * ElogE)  |    O(c2 * ElogE)       |    O(c3 * Eloglogu)   |
 
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when edges are inserted in random edge weight order
+
+![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png)
+
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in sorted edge weight order
 
 
-![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png){width="1columnwidth"}
+![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png)
 
-![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png){width="0.8columnwidth"}
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in reversed sorted edge weight order
 
-![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png){width="0.8columnwidth"}
+![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png)
 
 End user documentation
 ======================
