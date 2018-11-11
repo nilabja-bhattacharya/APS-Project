@@ -129,7 +129,7 @@ Time Analysis
   |--------------| -------------------- |----------------------|
   |O(c1 * ElogE)  |    O(c2 * ElogE)       |    O(c3 * Eloglogu)   |
 
-  |: Time Complexity Comparison
+            Time Complexity Comparison
 
 
 ![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png){width="1columnwidth"}
