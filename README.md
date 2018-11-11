@@ -129,11 +129,16 @@ Time Analysis
   |--------------| -------------------- |----------------------|
   |O(c1 * ElogE)  |    O(c2 * ElogE)       |    O(c3 * Eloglogu)   |
 
-
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when edges are inserted in random edge weight order
 
 ![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png)
 
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in sorted edge weight order
+
+
 ![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png)
+
+#### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in reversed sorted edge weight order
 
 ![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png)
 
