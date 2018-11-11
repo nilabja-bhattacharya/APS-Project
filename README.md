@@ -1,7 +1,7 @@
 Objective
 =========
 
-Krukal’s algorithm implementation using vEB tree, Fibonacci heap and union find algorithm and their performance comparison
+Kruskal’s algorithm implementation using vEB tree, Fibonacci heap and union find algorithm and their performance comparison
 
 Introduction
 ============
@@ -131,11 +131,11 @@ Time Analysis
 
 
 
-![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png){width="1columnwidth"}
+![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png)
 
-![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png){width="0.8columnwidth"}
+![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png)
 
-![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png){width="0.8columnwidth"}
+![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png)
 
 End user documentation
 ======================
