@@ -43,10 +43,6 @@ A disjoint-set data structure is a data structure that tracks a set of elements 
 
 Union by rank always attaches the shorter tree to the root of the taller tree. Thus, the resulting tree is no taller than the originals unless they were of equal height, in which case the resulting tree is taller by one node. In union by rank, each element is associated with a rank. Initially a set has one element and a rank of zero. If two sets are unioned and have the same rank, the resulting set’s rank is one larger; otherwise, if two sets are unioned and have different ranks, the resulting set’s rank is the larger of the two. Ranks are used instead of height or depth because path compression will change the trees’ heights over time. by size
 
-#### Union by size:
-
-In Union by size always attaches the tree with fewer elements to the root of the tree having more elements. With neither path compression (or a variant), union by rank, nor union by size, the height of trees can grow unchecked as O(n), which implies that Find and Union operations will take O(n) time.
-
 Fibonacci Heap
 --------------
 
