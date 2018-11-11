@@ -125,8 +125,8 @@ Time Analysis
 =============
 
 
-  |**Merge Sort** |   **Fibonnaci Heap**   | **Van Emde Boas Tree**|
-  |--------------:|: --------------------: |----------------------:|
+  | **Merge Sort** |   **Fibonnaci Heap**   | **Van Emde Boas Tree**|
+  |--------------| -------------------- |----------------------|
   |O(c1 * ElogE)  |    O(c2 * ElogE)       |    O(c3 * Eloglogu)   |
 
   |: Time Complexity Comparison
