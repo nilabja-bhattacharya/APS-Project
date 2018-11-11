@@ -37,6 +37,7 @@ class UnionFind:
                     self.rank[y] += 1
 
 def kruskal(h: vEB):
+    time_start = time.clock()
     mst_cost = 0
     global EdgeList
     UF = UnionFind(V)
@@ -68,6 +69,8 @@ def kruskal(h: vEB):
             UF.unionSet(y,z)
             #print(mst_cost)
             #print(temp)
+    time_elapsed = (time.clock() - time_start)
+    print("{0} {1} {2}".format(E,time_elapsed, mst_cost))
     return mst_cost
 
 
@@ -96,5 +99,4 @@ if __name__ == "__main__":
         nodes[w].append(edge(u,v))
         #print(nodes.get(w))
     #print(list(h))
-    print(kruskal(h))
-    
+    mst=kruskal(h)

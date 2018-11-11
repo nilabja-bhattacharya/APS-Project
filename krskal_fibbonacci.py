@@ -1,5 +1,5 @@
 from Fibbonaci_Heap import *
-
+import time
 V = None
 E = None
 EdgeList = []
@@ -51,7 +51,7 @@ def Kruskal(h: FibHeap):
 if __name__ == "__main__":
     # global V, E, EdgeList
     # V = 9
-
+    time_start = time.clock()
     # E = 14
     h = makeFibHeap()
     # # EdgeL = [(0,1,7),(0,3,6),(3,1,9),(3,2,8),(1,2,6)]
@@ -72,4 +72,6 @@ if __name__ == "__main__":
         v = int(input())
         w = int(input())
         FibHeapInsert(h, Node(w, u, v))
-    print(Kruskal(h))
+    mst=Kruskal(h)
+    time_elapsed = (time.clock() - time_start)
+    print("{0} {1} {2}".format(E,time_elapsed, mst))

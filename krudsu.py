@@ -1,4 +1,5 @@
 from collections import defaultdict
+import time
 V = None
 E = None
 EdgeList = []
@@ -48,6 +49,7 @@ def kruskal():
 
 
 if __name__ == "__main__":
+    time_start = time.clock()
     E = int(input())
     V = int(input())
 
@@ -62,4 +64,6 @@ if __name__ == "__main__":
         EdgeList.append(lst)
     EdgeList.sort(key = lambda x: x[0])
     #print (EdgeList)
-    print (kruskal())
+    mst=kruskal()
+    time_elapsed = (time.clock() - time_start)
+    print("{0} {1} {2}".format(E,time_elapsed, mst))
