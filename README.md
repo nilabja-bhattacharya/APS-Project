@@ -123,7 +123,7 @@ Results
 
 Time Analysis
 =============
-  ###Time Complexity Comparison
+  ### Time Complexity Comparison
 
   | **Merge Sort** |   **Fibonnaci Heap**   | **Van Emde Boas Tree**|
   |--------------| -------------------- |----------------------|
