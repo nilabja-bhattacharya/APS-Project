@@ -1,7 +1,7 @@
 Objective
 =========
 
-Kruskal’s algorithm implementation using vEB tree, Fibonacci heap and union find algorithm and their performance comparison
+Kruskal’s algorithm implementation using vEB tree, fibonacci heap and normal union find algorithm and their performance comparison
 
 Introduction
 ============
