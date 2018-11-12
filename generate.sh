@@ -1,3 +1,3 @@
 #!/bin/bash
-g++ generate.cpp -o gen
+g++ generate.cpp -o generate
 ./gen

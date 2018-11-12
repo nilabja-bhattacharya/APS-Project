@@ -11,7 +11,7 @@ Minimum spanning tree
 
 A minimum spanning tree (MST) is a subset of the edges of a connected, weighted (un)directed graph that connects all the vertices together, without any cycles and with the minimum possible total edge weight. That is, it is a spanning tree whose sum of edge weights is as small as possible. More generally, any edge-weighted un-directed graph (not necessarily connected) has a minimum spanning forest, which is a union of the minimum spanning trees for its connected components.
 
-![Minimum Spanning Tree<span data-label="fig:MST"></span>](mst.jpg)
+![Minimum Spanning Tree<span data-label="fig:MST"></span>](images/mst.jpg)
 
 ### Use cases
 
@@ -52,7 +52,7 @@ Fibonacci Heap
 
 A Fibonacci heap is a collection of rooted trees that are min-heap ordered. That is, each tree obeys the min-heap property : the key of a node is greater than or equal to the key of its parent. Figure 2 below shows an example of a Fibonacci heap. Each node x contains a pointer x.p to its parent and a pointer x.child to any one of its children. The children of x are linked together in a circular, doubly linked list, which we call the child list of x . Each child y in a child list has pointers y.left and y.right that point to y’s left and right siblings, respectively. If node y is an only child, then y.left = y.right = y . Siblings may appear in a child list in any order.
 
-![Fibbonaci Heap<span data-label="fig:fib1"></span>](Fibbonaci.JPG)
+![Fibbonaci Heap<span data-label="fig:fib1"></span>](images/Fibbonaci.JPG)
 
 1.  Operation insert works by creating a new heap with one element and doing merge. Time Complexity: O(1)
 
@@ -63,7 +63,7 @@ vEB Tree
 
 A Van Emde Boas tree, also known as a vEB tree, is a tree data structure which stores integers between [0, n-1] for a positive integer n. It performs all operations in O(log m) time, or equivalently in O(log log M) time, where M=2m is the maximum number of elements that can be stored in the tree. The M is not to be confused with the actual number of elements stored in the tree, by which the performance of other tree data-structures is often measured.
 
-![Van Emde Boas Tree<span data-label="fig:vb"></span>](vEB.png)
+![Van Emde Boas Tree<span data-label="fig:vb"></span>](images/vEB.png)
 
 ### The following operations of vEB Tree are used for the project:
 
@@ -131,16 +131,16 @@ Time Analysis
 
 #### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when edges are inserted in random edge weight order
 
-![Comparison with random edge weights<span data-label="fig:vb"></span>](random_data.png)
+![Comparison with random edge weights<span data-label="fig:vb"></span>](images/random_data.png)
 
 #### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in sorted edge weight order
 
 
-![Comparison with sorted edge weights<span data-label="fig:vb"></span>](sorted_data.png)
+![Comparison with sorted edge weights<span data-label="fig:vb"></span>](images/sorted_data.png)
 
 #### Figure demonstrating comparison of number of edges vs time required to compute mst-cost when when edges are inserted in reversed sorted edge weight order
 
-![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](rsorted_data.png)
+![Comparison with reverse sorted edge weights<span data-label="fig:vb"></span>](images/rsorted_data.png)
 
 End user documentation
 ======================
