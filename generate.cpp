@@ -23,9 +23,10 @@ int main()
         if(f%50==0)
             x=x*10;
         while(t--){
-            int n=rand()%x + 1;
-            printf("%d\n", n);
             int k=rand()%x+1;
+            int n=rand()%x + 1;
+            n = min((k*(k-1))/2, n);
+            printf("%d\n", n);
             printf("%d\n",k);
             for(long long int i=0;i<n;i++){
                 int lowerLimit = 1, upperLimit = 1e9+7;
