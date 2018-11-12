@@ -146,7 +146,7 @@ Run kruskal algorithm using normal DSU
 
 1.  Enter the directory
 
-2.  Run ./generate to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
+2.  Run ./generate.sh to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
 
 3.  Run ./krudsu.sh to run the python code on each file and the output for each file will be generated in dsu.txt with number of edges on which it was run, number of seconds required to compute the mst-cost, and the mst-cost
 
@@ -155,7 +155,7 @@ Run kruskal algorithm using vEB tree
 
 1.  Enter the directory
 
-2.  Run ./generate to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
+2.  Run ./generate.sh to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
 
 3.  Run ./kruveb.sh to run the python code on each file and the output for each file will be generated in veb.txt with number of edges on which it was run, number of seconds required to compute the mst-cost, and the mst-cost
 
@@ -164,7 +164,7 @@ Run kruskal algorithm using fibonacci heap
 
 1.  Enter the directory
 
-2.  Run ./generate to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
+2.  Run ./generate.sh to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
 
 3.  Run ./krufib.sh to run the python code on each file and the output for each file will be generated in fib.txt with number of edges on which it was run, number of seconds required to compute the mst-cost, and the mst-cost
 
@@ -173,7 +173,7 @@ Comparison of time complexity for each implementation
 
 1.  Enter the directory
 
-2.  Run ./generate to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
+2.  Run ./generate.sh to generate 150 files containing random number of edges with corressponding random edges weights of range 0-1000, 0-10000, 0-100000
 
 3.  Run ./setup.sh to generate plot that shows the comparison of time required to output mst-cost for each of the implementation
 
