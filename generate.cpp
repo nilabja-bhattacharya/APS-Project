@@ -25,7 +25,7 @@ int main()
         while(t--){
             int k=rand()%x+1;
             int n=rand()%x + 1;
-            n = min((k*(k-1))/2, n);
+            //n = min((k*(k-1))/2, n);
             printf("%d\n", n);
             printf("%d\n",k);
             for(long long int i=0;i<n;i++){
